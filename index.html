@@ -1,436 +1,563 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abhiram & Akshaya Wedding Invitation</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+<title>Abhiram & Akshaya Wedding Reception</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0d0d0d;
+    color:white;
+    font-family:'Poppins', sans-serif;
+    overflow-x:hidden;
+}
+
+/* HERO SECTION */
+
+.hero{
+    width:100%;
+    height:100vh;
+
+    /* CHANGE IMAGE NAME HERE */
+    background:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.6)),
+    url('achu-abhi.jpg');
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+    position:relative;
+}
+
+.hero-content{
+    animation:fadeUp 2s ease;
+}
+
+.invite-text{
+    text-transform:uppercase;
+    letter-spacing:5px;
+    font-size:14px;
+    margin-bottom:20px;
+    opacity:0.9;
+}
+
+/* COUPLE NAMES */
+
+.couple-names{
+    margin-top:10px;
+}
+
+.groom-name,
+.bride-name{
+    font-family:'Cormorant Garamond', serif;
+    font-size:76px;
+    font-weight:600;
+    letter-spacing:4px;
+    text-shadow:0 0 20px rgba(255,255,255,0.15);
+}
+
+.and-symbol{
+    font-size:30px;
+    margin:10px 0;
+    color:#d4af37;
+}
+
+.date{
+    margin-top:30px;
+    font-size:22px;
+    letter-spacing:2px;
+    color:#f5f5f5;
+}
+
+/* BUTTON */
+
+.view-btn{
+    margin-top:45px;
+    padding:15px 38px;
+    border:none;
+    border-radius:50px;
+    background:#d4af37;
+    color:black;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.view-btn:hover{
+    transform:translateY(-3px) scale(1.05);
+}
+
+/* MAIN SECTION */
+
+.main-content{
+    padding:90px 25px;
+    text-align:center;
+    background:#111;
+}
+
+.section-title{
+    font-size:54px;
+    font-family:'Cormorant Garamond', serif;
+    margin-bottom:25px;
+}
+
+/* MESSAGE */
+
+.message{
+    max-width:760px;
+    margin:auto;
+    line-height:2;
+    color:#d9d9d9;
+    font-size:17px;
+}
+
+.stylish-names{
+    display:block;
+    font-family:'Cormorant Garamond', serif;
+    font-size:58px;
+    font-weight:700;
+    color:#d4af37;
+    letter-spacing:3px;
+    line-height:1.2;
+    text-shadow:0 0 20px rgba(212,175,55,0.3);
+}
+
+.stylish-and{
+    display:block;
+    margin:12px 0;
+    font-size:30px;
+    color:white;
+    opacity:0.8;
+    font-family:'Cormorant Garamond', serif;
+}
+
+/* COUNTDOWN */
+
+.countdown{
+    margin-top:90px;
+}
+
+.timer{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:35px;
+}
+
+.time-box{
+    background:#1a1a1a;
+    padding:28px 25px;
+    border-radius:22px;
+    min-width:110px;
+    box-shadow:0 0 25px rgba(0,0,0,0.25);
+}
+
+.time-box h2{
+    font-size:42px;
+    color:#d4af37;
+}
+
+.time-box p{
+    margin-top:10px;
+    letter-spacing:2px;
+    font-size:13px;
+}
+
+/* MAP */
+
+.map-section{
+    margin-top:90px;
+}
+
+iframe{
+    width:100%;
+    max-width:900px;
+    height:360px;
+    border:none;
+    border-radius:20px;
+    margin-top:30px;
+}
+
+/* RSVP */
+
+.rsvp-section{
+    margin-top:90px;
+}
+
+.guest-count-box{
+    margin-top:35px;
+}
+
+.guest-count-box label{
+    display:block;
+    margin-bottom:12px;
+    font-size:16px;
+}
+
+.guest-count-box select{
+    width:230px;
+    padding:14px;
+    border:none;
+    border-radius:14px;
+    font-size:16px;
+    background:white;
+}
+
+.rsvp-btn{
+    margin-top:30px;
+    padding:16px 42px;
+    border:none;
+    border-radius:50px;
+    background:#25D366;
+    color:white;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.rsvp-btn:hover{
+    transform:translateY(-3px) scale(1.05);
+}
+
+/* FOOTER */
+
+.footer{
+    background:#0a0a0a;
+    padding:35px 20px;
+    text-align:center;
+    color:#777;
+    font-size:14px;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
     }
 
-    html{
-      scroll-behavior:smooth;
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
 
-    body{
-      font-family:'Poppins',sans-serif;
-      background:#f9f5ef;
-      overflow-x:hidden;
-      color:#3e2f2f;
-    }
+}
 
-    .hero{
-      height:100vh;
-      width:100%;
-      background:
-      linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-      url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1974&auto=format&fit=crop');
-      background-size:cover;
-      background-position:center;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      position:relative;
-      padding:20px;
-    }
+/* MOBILE */
 
-    .hero-content{
-      color:white;
-      animation:fadeIn 2s ease;
-    }
+@media(max-width:768px){
 
-    .tag{
-      letter-spacing:4px;
-      text-transform:uppercase;
-      font-size:14px;
-      margin-bottom:20px;
-      opacity:0.9;
-    }
-
-    .couple-names{
-      font-family:'Cinzel',serif;
-      font-size:60px;
-      line-height:1.3;
-      margin-bottom:25px;
-      font-weight:600;
-    }
-
-    .date{
-      font-size:18px;
-      margin-bottom:40px;
-      letter-spacing:1px;
-    }
-
-    .btn{
-      display:inline-block;
-      padding:16px 38px;
-      border-radius:50px;
-      text-decoration:none;
-      background:#d4af37;
-      color:white;
-      font-weight:500;
-      transition:0.3s ease;
-      box-shadow:0 8px 25px rgba(0,0,0,0.25);
-    }
-
-    .btn:hover{
-      transform:translateY(-3px);
-      background:#b9932f;
-    }
-
-    .invitation{
-      min-height:100vh;
-      padding:70px 20px;
-      background:#fffaf3;
-      position:relative;
-    }
-
-    .container{
-      max-width:900px;
-      margin:auto;
-      background:white;
-      border-radius:28px;
-      padding:50px 28px;
-      box-shadow:0 10px 40px rgba(0,0,0,0.08);
+    .groom-name,
+    .bride-name{
+        font-size:54px;
     }
 
     .section-title{
-      text-align:center;
-      font-family:'Cinzel',serif;
-      font-size:34px;
-      margin-bottom:18px;
-      color:#5a3b22;
+        font-size:42px;
+    }
+
+    .stylish-names{
+        font-size:42px;
     }
 
     .message{
-      text-align:center;
-      line-height:1.9;
-      font-size:16px;
-      color:#555;
-      max-width:700px;
-      margin:0 auto 40px;
-    }
-
-    .details{
-      text-align:center;
-      margin-bottom:45px;
-    }
-
-    .details h2{
-      font-size:30px;
-      margin-bottom:15px;
-      font-family:'Cinzel',serif;
-      color:#3b2a1d;
-    }
-
-    .details p{
-      margin:10px 0;
-      font-size:16px;
-      color:#666;
-    }
-
-    .countdown{
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:18px;
-      margin:40px 0;
+        font-size:15px;
     }
 
     .time-box{
-      background:#fff4df;
-      width:120px;
-      height:120px;
-      border-radius:22px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      box-shadow:0 5px 20px rgba(0,0,0,0.05);
+        min-width:85px;
+        padding:20px;
     }
 
-    .time-box h1{
-      font-size:34px;
-      color:#8b5e34;
+    .time-box h2{
+        font-size:32px;
     }
 
-    .time-box span{
-      font-size:14px;
-      letter-spacing:1px;
-      margin-top:5px;
-      color:#666;
-    }
+}
 
-    .map-section{
-      margin-top:50px;
-    }
+</style>
 
-    .map-section h3{
-      text-align:center;
-      margin-bottom:20px;
-      font-family:'Cinzel',serif;
-      font-size:28px;
-      color:#5a3b22;
-    }
-
-    iframe{
-      width:100%;
-      height:350px;
-      border:none;
-      border-radius:22px;
-    }
-
-    .rsvp{
-      text-align:center;
-      margin-top:45px;
-    }
-
-    .rsvp a{
-      display:inline-block;
-      margin-top:18px;
-      text-decoration:none;
-      background:#25D366;
-      color:white;
-      padding:14px 28px;
-      border-radius:50px;
-      font-weight:500;
-    }
-
-    .footer{
-      margin-top:45px;
-      text-align:center;
-      color:#888;
-      font-size:14px;
-    }
-
-    .petal{
-      position:fixed;
-      top:-10px;
-      width:15px;
-      height:15px;
-      background:rgba(255,182,193,0.7);
-      border-radius:50%;
-      animation:fall linear infinite;
-      z-index:999;
-    }
-
-    @keyframes fall{
-      to{
-        transform:translateY(110vh) rotate(360deg);
-      }
-    }
-
-    @keyframes fadeIn{
-      from{
-        opacity:0;
-        transform:translateY(20px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
-    @media(max-width:768px){
-
-      .couple-names{
-        font-size:40px;
-      }
-
-      .section-title{
-        font-size:28px;
-      }
-
-      .container{
-        padding:40px 20px;
-      }
-
-      .time-box{
-        width:90px;
-        height:90px;
-      }
-
-      .time-box h1{
-        font-size:24px;
-      }
-    }
-
-  </style>
 </head>
 
 <body>
 
-  <div class="petal" style="left:10%;animation-duration:10s;"></div>
-  <div class="petal" style="left:20%;animation-duration:14s;"></div>
-  <div class="petal" style="left:35%;animation-duration:11s;"></div>
-  <div class="petal" style="left:50%;animation-duration:15s;"></div>
-  <div class="petal" style="left:65%;animation-duration:13s;"></div>
-  <div class="petal" style="left:80%;animation-duration:10s;"></div>
-  <div class="petal" style="left:92%;animation-duration:16s;"></div>
+<!-- HERO -->
 
-  <section class="hero">
+<section class="hero">
 
     <div class="hero-content">
 
-      <div class="tag">
-        Together With Their Families
-      </div>
+        <div class="invite-text">
+            Wedding Reception Invitation
+        </div>
 
-      <div class="couple-names">
-        Akshaya <br>
-        & <br>
-        Abhiram
-      </div>
+        <div class="couple-names">
 
-      <div class="date">
-        12 December 2026
-      </div>
+            <h1 class="groom-name">
+                Abhiram
+            </h1>
 
-      <a href="#invitation" class="btn">
-        View Invitation
-      </a>
+            <div class="and-symbol">
+                &
+            </div>
+
+            <h1 class="bride-name">
+                Akshaya
+            </h1>
+
+        </div>
+
+        <div class="date">
+            30 August 2026
+        </div>
+
+        <button class="view-btn" onclick="scrollToInvitation()">
+            View Invitation
+        </button>
 
     </div>
 
-  </section>
+</section>
 
-  <section class="invitation" id="invitation">
+<!-- MAIN CONTENT -->
 
-    <div class="container">
+<section class="main-content" id="invitation">
 
-      <h1 class="section-title">
-        Wedding Reception Invitation
-      </h1>
+    <h1 class="section-title">
+        You're Invited
+    </h1>
 
-      <p class="message">
-        With immense joy and heartfelt happiness, we invite you to celebrate the wedding reception of our beloved couple. Your gracious presence and blessings will make this occasion truly memorable for us and our families.
-      </p>
+    <p class="message">
 
-      <div class="details">
+        With immense joy and heartfelt happiness,
+        we invite you to celebrate the wedding reception of
 
-        <h2>
-          Akshaya & Abhiram
-        </h2>
+        <br><br>
 
-        <p>
-          Sunday, 12 December 2026
-        </p>
+        <span class="stylish-names">
+            Abhiram
+        </span>
 
-        <p>
-          6:30 PM onwards
-        </p>
+        <span class="stylish-and">
+            &
+        </span>
 
-        <p>
-          Grand Hyatt Convention Center,
-          Kochi, Kerala
-        </p>
+        <span class="stylish-names">
+            Akshaya
+        </span>
 
-      </div>
+        <br><br>
 
-      <div class="countdown">
+        Your presence, blessings, and love will make
+        our special evening even more memorable.
 
-        <div class="time-box">
-          <h1 id="days">00</h1>
-          <span>DAYS</span>
+    </p>
+
+    <!-- COUNTDOWN -->
+
+    <div class="countdown">
+
+        <h1 class="section-title">
+            Countdown
+        </h1>
+
+        <div class="timer">
+
+            <div class="time-box">
+                <h2 id="days">00</h2>
+                <p>DAYS</p>
+            </div>
+
+            <div class="time-box">
+                <h2 id="hours">00</h2>
+                <p>HOURS</p>
+            </div>
+
+            <div class="time-box">
+                <h2 id="minutes">00</h2>
+                <p>MINUTES</p>
+            </div>
+
+            <div class="time-box">
+                <h2 id="seconds">00</h2>
+                <p>SECONDS</p>
+            </div>
+
         </div>
-
-        <div class="time-box">
-          <h1 id="hours">00</h1>
-          <span>HOURS</span>
-        </div>
-
-        <div class="time-box">
-          <h1 id="minutes">00</h1>
-          <span>MINUTES</span>
-        </div>
-
-        <div class="time-box">
-          <h1 id="seconds">00</h1>
-          <span>SECONDS</span>
-        </div>
-
-      </div>
-
-      <div class="map-section">
-
-        <h3>
-          Venue Location
-        </h3>
-
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3913.6753343593955!2d75.79452117411415!3d11.211639788964789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba659c7768c9d71%3A0xe48bb7eddf6f3d27!2sALANKAR%20AUDITORIUM!5e0!3m2!1sen!2sin!4v1778501347210!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-      </div>
-
-      <div class="rsvp">
-
-        <p>
-          We would be delighted to celebrate this special day with you.
-        </p>
-
-        <a
-          href="https://wa.me/919446588044?text=Congratulations%20on%20your%20wedding!">
-          RSVP on WhatsApp
-        </a>
-
-      </div>
-
-      <div class="footer">
-        With Love ❤️
-      </div>
 
     </div>
 
-  </section>
+    <!-- LOCATION -->
 
-  <script>
+    <div class="map-section">
 
-    const weddingDate = new Date("Dec 12, 2026 18:30:00").getTime();
+        <h1 class="section-title">
+            Venue
+        </h1>
 
-    const timer = setInterval(function(){
+        <p class="message">
+            Grand Wedding Hall,
+            Kerala, India
+        </p>
 
-      const now = new Date().getTime();
+        <iframe
+        src="https://maps.google.com/maps?q=guruvayur&t=&z=13&ie=UTF8&iwloc=&output=embed">
+        </iframe>
 
-      const distance = weddingDate - now;
+    </div>
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    <!-- RSVP -->
 
-      const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) /
-        (1000 * 60 * 60)
-      );
+    <div class="rsvp-section">
 
-      const minutes = Math.floor(
-        (distance % (1000 * 60 * 60)) /
-        (1000 * 60)
-      );
+        <h1 class="section-title">
+            RSVP
+        </h1>
 
-      const seconds = Math.floor(
-        (distance % (1000 * 60)) / 1000
-      );
+        <div class="guest-count-box">
 
-      document.getElementById("days").innerHTML = days;
-      document.getElementById("hours").innerHTML = hours;
-      document.getElementById("minutes").innerHTML = minutes;
-      document.getElementById("seconds").innerHTML = seconds;
+            <label for="guestCount">
+                Number of Guests Joining
+            </label>
 
-      if(distance < 0){
+            <select id="guestCount">
 
-        clearInterval(timer);
+                <option value="1">
+                    1 Guest
+                </option>
 
-        document.querySelector(".countdown").innerHTML =
-        "<h2>The Celebration Has Begun ❤️</h2>";
-      }
+                <option value="2">
+                    2 Guests
+                </option>
 
-    },1000);
+                <option value="3">
+                    3 Guests
+                </option>
 
-  </script>
+                <option value="4">
+                    4 Guests
+                </option>
+
+                <option value="5">
+                    5 Guests
+                </option>
+
+            </select>
+
+        </div>
+
+        <button class="rsvp-btn" onclick="sendWhatsAppRSVP()">
+            RSVP on WhatsApp
+        </button>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<div class="footer">
+    Made with ❤️ for Abhiram & Akshaya
+</div>
+
+<script>
+
+/* SCROLL */
+
+function scrollToInvitation(){
+
+    document.getElementById('invitation').scrollIntoView({
+        behavior:'smooth'
+    });
+
+}
+
+/* COUNTDOWN */
+
+const weddingDate =
+new Date("August 30, 2026 00:00:00").getTime();
+
+const countdown = setInterval(function(){
+
+    const now = new Date().getTime();
+
+    const distance = weddingDate - now;
+
+    const days =
+    Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    const hours =
+    Math.floor((distance % (1000 * 60 * 60 * 24))
+    / (1000 * 60 * 60));
+
+    const minutes =
+    Math.floor((distance % (1000 * 60 * 60))
+    / (1000 * 60));
+
+    const seconds =
+    Math.floor((distance % (1000 * 60))
+    / 1000);
+
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("minutes").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = seconds;
+
+},1000);
+
+/* WHATSAPP RSVP */
+
+function sendWhatsAppRSVP(){
+
+    const guests =
+    document.getElementById("guestCount").value;
+
+    const message =
+`Hello Abhiram & Akshaya,
+
+We are delighted to attend your wedding reception on 30 August 2026.
+
+Number of guests joining: ${guests}
+
+Best Wishes ❤️`;
+
+    const phoneNumber = "919446588044";
+
+    const whatsappURL =
+`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, '_blank');
+
+}
+
+</script>
 
 </body>
 </html>
