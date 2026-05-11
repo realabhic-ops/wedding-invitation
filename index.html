@@ -41,6 +41,43 @@ body.locked{
     touch-action:none;
 }
 
+/* CONFETTI / POPPERS */
+
+.confetti-container{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:9999;
+}
+
+.confetti{
+    position:absolute;
+    width:10px;
+    height:18px;
+    opacity:0;
+    animation:confettiFall linear forwards;
+    border-radius:3px;
+}
+
+@keyframes confettiFall{
+
+    0%{
+        transform:
+        translate3d(0,-10vh,0)
+        rotate(0deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:
+        translate3d(var(--xMove),110vh,0)
+        rotate(720deg);
+        opacity:0;
+    }
+
+}
+
 /* HERO SECTION */
 
 .hero{
@@ -63,7 +100,17 @@ body.locked{
     position:relative;
 }
 
+.hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.18);
+    backdrop-filter:blur(1px);
+}
+
 .hero-content{
+    position:relative;
+    z-index:2;
     animation:fadeUp 2s ease;
 }
 
@@ -187,6 +234,7 @@ body.locked{
     border-radius:22px;
     min-width:110px;
     box-shadow:0 0 25px rgba(0,0,0,0.25);
+    border:1px solid rgba(255,255,255,0.05);
 }
 
 .time-box h2{
@@ -198,6 +246,27 @@ body.locked{
     margin-top:10px;
     letter-spacing:2px;
     font-size:13px;
+}
+
+/* RECEPTION DETAILS */
+
+.reception-details{
+    margin-top:40px;
+    line-height:2;
+}
+
+.reception-date{
+    font-size:28px;
+    color:#d4af37;
+    font-family:'Cormorant Garamond', serif;
+    letter-spacing:2px;
+}
+
+.reception-time{
+    margin-top:10px;
+    font-size:18px;
+    color:#f1f1f1;
+    letter-spacing:1px;
 }
 
 /* MAP */
@@ -313,6 +382,10 @@ iframe{
         font-size:32px;
     }
 
+    .reception-date{
+        font-size:24px;
+    }
+
 }
 
 </style>
@@ -320,6 +393,10 @@ iframe{
 </head>
 
 <body class="locked">
+
+<!-- CONFETTI -->
+
+<div class="confetti-container" id="confettiContainer"></div>
 
 <!-- MUSIC -->
 
@@ -431,6 +508,18 @@ iframe{
 
         </div>
 
+        <div class="reception-details">
+
+            <div class="reception-date">
+                30 August 2026
+            </div>
+
+            <div class="reception-time">
+                From 6:00 PM onwards
+            </div>
+
+        </div>
+
     </div>
 
     <!-- LOCATION -->
@@ -442,13 +531,10 @@ iframe{
         </h1>
 
         <p class="message">
-            Grand Wedding Hall,
-            Kerala, India
+          ALANKAR AUDITORIUM
         </p>
 
-        <iframe
-        src="https://maps.google.com/maps?q=guruvayur&t=&z=13&ie=UTF8&iwloc=&output=embed">
-        </iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3913.6753343593955!2d75.79452117411415!3d11.211639788964789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba659c7768c9d71%3A0xe48bb7eddf6f3d27!2sALANKAR%20AUDITORIUM!5e0!3m2!1sen!2sin!4v1778501347210!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
     </div>
 
@@ -508,23 +594,82 @@ document.addEventListener(
     { passive:false }
 );
 
+/* CONFETTI */
+
+let confettiStarted = false;
+
+function startConfetti(){
+
+    if(confettiStarted) return;
+
+    confettiStarted = true;
+
+    const colors = [
+        "#ff4d6d",
+        "#ffd166",
+        "#06d6a0",
+        "#118ab2",
+        "#ffffff",
+        "#d4af37",
+        "#ff85a1"
+    ];
+
+    const container =
+    document.getElementById("confettiContainer");
+
+    setInterval(() => {
+
+        const confetti =
+        document.createElement("div");
+
+        confetti.classList.add("confetti");
+
+        confetti.style.left =
+        Math.random() * 100 + "vw";
+
+        confetti.style.background =
+        colors[Math.floor(Math.random() * colors.length)];
+
+        confetti.style.animationDuration =
+        (Math.random() * 3 + 4) + "s";
+
+        confetti.style.width =
+        (Math.random() * 8 + 6) + "px";
+
+        confetti.style.height =
+        (Math.random() * 14 + 10) + "px";
+
+        confetti.style.setProperty(
+            '--xMove',
+            ((Math.random() * 200) - 100) + 'px'
+        );
+
+        container.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.remove();
+        },7000);
+
+    },120);
+
+}
+
 /* OPEN INVITATION */
 
 function openInvitation(){
 
-    /* UNLOCK SCROLL */
     document.body.classList.remove('locked');
 
     document.documentElement.style.overflowY = "auto";
     document.body.style.overflowY = "auto";
 
-    /* PLAY MUSIC */
     const music =
     document.getElementById("bgMusic");
 
     music.play();
 
-    /* SCROLL TO INVITATION */
+    startConfetti();
+
     document.getElementById('invitation').scrollIntoView({
         behavior:'smooth'
     });
@@ -534,7 +679,7 @@ function openInvitation(){
 /* COUNTDOWN */
 
 const weddingDate =
-new Date("August 30, 2026 00:00:00").getTime();
+new Date("August 30, 2026 18:00:00").getTime();
 
 setInterval(function(){
 
