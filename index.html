@@ -17,15 +17,28 @@
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    overscroll-behavior:none;
+    -webkit-overflow-scrolling:auto;
 }
 
 body{
     background:#0d0d0d;
     color:white;
     font-family:'Poppins', sans-serif;
+}
+
+/* LOCK SCROLL INITIALLY */
+
+body.locked{
+    position:fixed;
+    width:100%;
     overflow:hidden;
+    touch-action:none;
 }
 
 /* HERO SECTION */
@@ -254,7 +267,7 @@ iframe{
     font-size:14px;
 }
 
-/* ANIMATIONS */
+/* ANIMATION */
 
 @keyframes fadeUp{
 
@@ -306,7 +319,7 @@ iframe{
 
 </head>
 
-<body>
+<body class="locked">
 
 <!-- MUSIC -->
 
@@ -429,10 +442,13 @@ iframe{
         </h1>
 
         <p class="message">
-            Alankar Auditorium
+            Grand Wedding Hall,
+            Kerala, India
         </p>
 
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3913.6753343593955!2d75.79452117411415!3d11.211639788964789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba659c7768c9d71%3A0xe48bb7eddf6f3d27!2sALANKAR%20AUDITORIUM!5e0!3m2!1sen!2sin!4v1778501347210!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe
+        src="https://maps.google.com/maps?q=guruvayur&t=&z=13&ie=UTF8&iwloc=&output=embed">
+        </iframe>
 
     </div>
 
@@ -452,25 +468,11 @@ iframe{
 
             <select id="guestCount">
 
-                <option value="1">
-                    1 Guest
-                </option>
-
-                <option value="2">
-                    2 Guests
-                </option>
-
-                <option value="3">
-                    3 Guests
-                </option>
-
-                <option value="4">
-                    4 Guests
-                </option>
-
-                <option value="5">
-                    5 Guests
-                </option>
+                <option value="1">1 Guest</option>
+                <option value="2">2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="5">5 Guests</option>
 
             </select>
 
@@ -492,11 +494,28 @@ iframe{
 
 <script>
 
+/* MOBILE SCROLL LOCK */
+
+document.addEventListener(
+    'touchmove',
+    function(e){
+
+        if(document.body.classList.contains('locked')){
+            e.preventDefault();
+        }
+
+    },
+    { passive:false }
+);
+
 /* OPEN INVITATION */
 
 function openInvitation(){
 
-    /* ENABLE SCROLL */
+    /* UNLOCK SCROLL */
+    document.body.classList.remove('locked');
+
+    document.documentElement.style.overflowY = "auto";
     document.body.style.overflowY = "auto";
 
     /* PLAY MUSIC */
@@ -505,7 +524,7 @@ function openInvitation(){
 
     music.play();
 
-    /* SCROLL TO CONTENT */
+    /* SCROLL TO INVITATION */
     document.getElementById('invitation').scrollIntoView({
         behavior:'smooth'
     });
@@ -517,7 +536,7 @@ function openInvitation(){
 const weddingDate =
 new Date("August 30, 2026 00:00:00").getTime();
 
-const countdown = setInterval(function(){
+setInterval(function(){
 
     const now = new Date().getTime();
 
@@ -561,7 +580,7 @@ Number of guests joining: ${guests}
 
 Best Wishes ❤️`;
 
-    const phoneNumber = "9446588044";
+    const phoneNumber = "919446588044";
 
     const whatsappURL =
 `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
