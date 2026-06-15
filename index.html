@@ -218,7 +218,7 @@ body.locked{
     display:block;
     margin:12px 0;
     font-size:30px;
-    color:white;
+    color:black;
     opacity:0.8;
     font-family:'Cormorant Garamond', serif;
 }
@@ -265,7 +265,7 @@ body.locked{
 }
 
 .reception-date{
-    font-size:28px;
+    font-size:30px;
     color:#d4af37;
     font-family:'Cormorant Garamond', serif;
     letter-spacing:2px;
@@ -274,7 +274,7 @@ body.locked{
 .reception-time{
     margin-top:10px;
     font-size:18px;
-    color:#f1f1f1;
+    color:#58b9ca;
     letter-spacing:1px;
 }
 
@@ -542,38 +542,6 @@ iframe{
 
     </div>
 
-    <!-- RSVP -->
-
-    <div class="rsvp-section">
-
-        <h1 class="section-title">
-            RSVP
-        </h1>
-
-        <div class="guest-count-box">
-
-            <label for="guestCount">
-                Number of Guests Joining
-            </label>
-
-            <select id="guestCount">
-
-                <option value="1">1 Guest</option>
-                <option value="2">2 Guests</option>
-                <option value="3">3 Guests</option>
-                <option value="4">4 Guests</option>
-                <option value="5">5 Guests</option>
-
-            </select>
-
-        </div>
-
-        <button class="rsvp-btn" onclick="sendWhatsAppRSVP()">
-            RSVP on WhatsApp
-        </button>
-
-    </div>
-
 </section>
 
 <!-- FOOTER -->
@@ -708,30 +676,6 @@ setInterval(function(){
 
 },1000);
 
-/* WHATSAPP RSVP */
-
-function sendWhatsAppRSVP(){
-
-    const guests =
-    document.getElementById("guestCount").value;
-
-    const message =
-`Hello Abhiram & Akshaya,
-
-We are delighted to attend your wedding reception on 30 August 2026.
-
-Number of guests joining: ${guests}
-
-Best Wishes ❤️`;
-
-    const phoneNumber = "919446588044";
-
-    const whatsappURL =
-`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-
-    window.open(whatsappURL, '_blank');
-
-}
 
 </script>
 
