@@ -395,6 +395,67 @@ iframe{
         font-size:24px;
     }
 
+    .petals-container{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:9999;
+}
+
+.petal{
+    position:absolute;
+    top:-50px;
+    width:18px;
+    height:24px;
+
+    background:linear-gradient(
+        135deg,
+        #ff5c7a,
+        #d81b60
+    );
+
+    border-radius:
+        50% 0 50% 50%;
+
+    opacity:0.9;
+
+    transform-origin:center;
+
+    box-shadow:
+        0 0 6px rgba(255,92,122,0.3);
+
+    animation:petalFall linear forwards;
+}
+
+@keyframes petalFall{
+
+    0%{
+        transform:
+        translateY(-50px)
+        rotate(0deg);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    100%{
+        transform:
+        translate(
+            var(--xMove),
+            110vh
+        )
+        rotate(
+            var(--rotation)
+        );
+
+        opacity:0.8;
+    }
+
+}
+
 }
 
 </style>
@@ -402,10 +463,9 @@ iframe{
 </head>
 
 <body class="locked">
+<div class="petals-container" id="petalsContainer"></div>
 
-<!-- CONFETTI -->
 
-<div class="confetti-container" id="confettiContainer"></div>
 
 
 <!-- HERO -->
@@ -566,65 +626,54 @@ document.addEventListener(
     { passive:false }
 );
 
-/* CONFETTI */
+let petalsStarted = false;
 
-let confettiStarted = false;
+function startPetals(){
 
-function startConfetti(){
+    if(petalsStarted) return;
 
-    if(confettiStarted) return;
-
-    confettiStarted = true;
-
-    const colors = [
-        "#ff4d6d",
-        "#ffd166",
-        "#06d6a0",
-        "#118ab2",
-        "#ffffff",
-        "#d4af37",
-        "#ff85a1"
-    ];
+    petalsStarted = true;
 
     const container =
-    document.getElementById("confettiContainer");
+    document.getElementById("petalsContainer");
 
     setInterval(() => {
 
-        const confetti =
+        const petal =
         document.createElement("div");
 
-        confetti.classList.add("confetti");
+        petal.className = "petal";
 
-        confetti.style.left =
+        petal.style.left =
         Math.random() * 100 + "vw";
 
-        confetti.style.background =
-        colors[Math.floor(Math.random() * colors.length)];
+        petal.style.animationDuration =
+        (Math.random() * 5 + 6) + "s";
 
-        confetti.style.animationDuration =
-        (Math.random() * 3 + 4) + "s";
-
-        confetti.style.width =
-        (Math.random() * 8 + 6) + "px";
-
-        confetti.style.height =
-        (Math.random() * 14 + 10) + "px";
-
-        confetti.style.setProperty(
-            '--xMove',
-            ((Math.random() * 200) - 100) + 'px'
+        petal.style.setProperty(
+            "--xMove",
+            ((Math.random()*250)-125) + "px"
         );
 
-        container.appendChild(confetti);
+        petal.style.setProperty(
+            "--rotation",
+            ((Math.random()*1080)-540) + "deg"
+        );
+
+        petal.style.opacity =
+        0.6 + Math.random() * 0.4;
+
+        container.appendChild(petal);
 
         setTimeout(() => {
-            confetti.remove();
-        },7000);
+            petal.remove();
+        },12000);
 
-    },120);
+    },180);
 
 }
+
+
 
 /* OPEN INVITATION */
 
@@ -635,7 +684,7 @@ function openInvitation(){
     document.documentElement.style.overflowY = "auto";
     document.body.style.overflowY = "auto";
 
-    startConfetti();
+    startPetals();
 
     document.getElementById('invitation').scrollIntoView({
         behavior:'smooth'
